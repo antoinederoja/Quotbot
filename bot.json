@@ -1,0 +1,34 @@
+{
+  "id": "244fdf24-5011-4f9c-93c7-c887beb1c6d7",
+  "name": "quotabot",
+  "description": null,
+  "default_flow": "Default",
+  "flows": [
+    {
+      "name": "Default",
+      "description": "Default custom flow",
+      "commands": []
+    },
+    {
+      "name": "quote",
+      "commands": []
+    }
+  ],
+  "files": [],
+  "functions": [],
+  "apps": [
+    {
+      "name": "giphy",
+      "description": "Find random GIFs and stickers relevant to your chatbot conversation. Powered by Giphy.",
+      "args": [
+        "action=\"gif|sticker\"",
+        "query=\"\""
+      ],
+      "runtime": "nodejs12.x",
+      "handler": "index.handler",
+      "environment": {},
+      "app_id": "7c8ce645-fb76-4d8f-ab47-90f4ffe3ca8a",
+      "version": "1.1.0"
+    }
+  ]
+}

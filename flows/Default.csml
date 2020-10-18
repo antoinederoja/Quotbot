@@ -1,0 +1,35 @@
+start:
+  say "Hi, I'm Quotabot, I am here to help you out with pricing💸."
+  do gifs = Fn("giphy", action="gif", query="hello")
+  say Image(gifs[OneOf([0,1,2,3,4])])
+  goto name
+
+name:
+  say Question(
+    "Before starting, it'll be much better if we can call each other by our names, what's yours?",
+    button_type="quick_reply",
+    buttons=[Button("I'm anonymous 😎") as btn]
+  )
+  hold
+  if (event match btn) {
+    remember name = "Anon"
+  } else {
+    remember name = event
+  }
+  goto find
+
+find:
+  say "I just got an other quick question..."
+  say Typing(3000)
+  say Question("How did you find us ?",
+    button_type="quick_reply",
+    buttons=[
+      Button("Google / Bing"),
+      Button("Partner"),
+      Button("Social media"),
+      Button("Other")
+  ])
+  hold
+  remember find = event
+  say "Thanks!"
+  goto flow quote

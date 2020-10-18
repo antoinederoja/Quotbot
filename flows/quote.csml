@@ -1,0 +1,30 @@
+start:
+goto getnTweets
+  say "How many twitter followers do you have?"
+  hold
+  remember tf = event
+  goto getnTweets
+
+getnTweets:
+  say Question("How many tweets do you post in a week?",
+    button_type="quick_reply",
+    buttons=[
+      Button("Less than 20") as btn_l20,
+      Button("20 to 100") as btn_20100,
+      Button("100 to 200") as btn_100200,
+      Button("More than 200", ) as btn_o200
+    ])
+  hold
+  do matched = event.match(btn_l20, btn_20100, btn_100200, btn_o200)
+  remember ntweets = matched.title
+  goto nAimTweets
+
+nAimTweets:
+  say "How many people have access to your account?"
+  hold
+  remember nEditor = event
+  goto calcul
+
+calcul:
+  say "The price will be --- per year"
+  goto end
